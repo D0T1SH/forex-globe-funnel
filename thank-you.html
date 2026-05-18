@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Application Received — Book Your Strategy Session</title>
+<style>
+  :root{
+    --bg:#070707;--bg-2:#0f0f0f;--card:#141414;--line:#222;
+    --text:#f5f5f5;--muted:#9a9a9a;
+    --accent:#d4af37;--accent-2:#b89530;--accent-soft:rgba(212,175,55,.12);
+    --green:#00d27a;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);font-family:'Inter','Helvetica Neue',Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+
+  nav{position:sticky;top:0;background:rgba(7,7,7,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:50}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-weight:800;font-size:20px;letter-spacing:.5px;text-transform:uppercase}
+  .logo span{color:var(--accent)}
+
+  .wrap{max-width:820px;margin:0 auto;padding:60px 24px 80px}
+
+  .hero{text-align:center;margin-bottom:40px}
+  .badge{
+    display:inline-block;background:var(--accent-soft);color:var(--accent);
+    border:1px solid rgba(212,175,55,.3);padding:6px 14px;border-radius:999px;
+    font-size:13px;font-weight:600;margin-bottom:22px;letter-spacing:1px;text-transform:uppercase;
+  }
+  h1{font-size:clamp(28px,4.5vw,46px);font-weight:800;letter-spacing:-.02em;line-height:1.05;margin-bottom:18px}
+  h1 .accent{color:var(--accent)}
+  .lead{color:var(--muted);font-size:17px;max-width:620px;margin:0 auto;line-height:1.6}
+  .lead strong{color:#fff}
+
+  .vsl-wrap{
+    margin:36px auto;border-radius:18px;overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 25px 70px rgba(0,0,0,.7),0 0 0 1px rgba(212,175,55,.15);
+    max-width:760px;background:#000;
+  }
+  .vsl{position:relative;width:100%;aspect-ratio:16/9;background:#000}
+  .vsl iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  .cta-block{
+    text-align:center;background:var(--card);border:1px solid var(--line);
+    border-radius:18px;padding:48px 32px;margin:32px 0;position:relative;overflow:hidden;
+  }
+  .cta-block::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  }
+  .cta-block h2{font-size:24px;margin-bottom:12px;font-weight:800}
+  .cta-block p{color:var(--muted);font-size:15px;margin-bottom:28px;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.7}
+  .cta-block p strong{color:#fff}
+  .cta{
+    display:inline-block;background:var(--accent);color:#000;
+    padding:18px 40px;border-radius:10px;font-weight:800;font-size:16px;
+    transition:.2s;text-transform:uppercase;letter-spacing:.5px;
+  }
+  .cta:hover{background:var(--accent-2);transform:translateY(-2px)}
+  .cta-sub{color:var(--accent);font-size:13px;font-weight:600;margin-top:14px;display:block}
+
+  /* CHECKLIST */
+  .what-next{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:36px;margin:24px 0}
+  .what-next h3{font-size:18px;margin-bottom:22px;color:var(--accent);letter-spacing:1px;text-transform:uppercase;font-size:13px}
+  .what-next h3 + p{font-size:22px;color:#fff;font-weight:700;margin-bottom:24px;letter-spacing:-.01em}
+  .what-next ul{list-style:none}
+  .what-next li{display:flex;gap:14px;padding:12px 0;color:#ddd;font-size:15px;line-height:1.6;border-bottom:1px solid var(--line)}
+  .what-next li:last-child{border-bottom:none}
+  .check{
+    flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);
+    color:var(--accent);display:flex;align-items:center;justify-content:center;
+    font-size:13px;font-weight:800;margin-top:1px;
+  }
+
+  /* SOCIAL */
+  .socials{text-align:center;margin-top:48px;padding-top:32px;border-top:1px solid var(--line)}
+  .socials p{color:var(--muted);margin-bottom:16px;font-size:14px}
+  .social-links{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .social-links a{
+    padding:10px 18px;background:var(--card);border:1px solid var(--line);
+    border-radius:8px;font-size:13px;color:#ddd;transition:.2s;
+  }
+  .social-links a:hover{border-color:var(--accent);color:var(--accent)}
+
+  /* "THINK" version */
+  .think-box{display:none}
+  .qualified-box{display:block}
+  body.think .qualified-box{display:none}
+  body.think .think-box{display:block}
+
+  footer{padding:36px 24px;text-align:center;color:#555;font-size:12px;border-top:1px solid var(--line);background:var(--bg-2)}
+  footer .brand{color:var(--accent);font-weight:800;letter-spacing:1px;margin-bottom:6px;font-size:14px}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Forex <span>Globe</span></div>
+    <a href="index.html" style="font-size:14px;color:var(--muted)">← Home</a>
+  </div>
+</nav>
+
+<div class="wrap">
+
+  <!-- QUALIFIED VERSION -->
+  <div class="qualified-box">
+    <div class="hero">
+      <div class="badge">✓ Application Received</div>
+      <h1>You're In.<br><span class="accent">Watch This Short Video.</span></h1>
+      <p class="lead">Based on your answers, you're exactly the type of trader I work with. <strong>One last step</strong> — watch the short video below, then book your strategy session with me directly.</p>
+    </div>
+
+    <div class="vsl-wrap">
+      <div class="vsl">
+        <iframe src="https://fast.wistia.net/embed/iframe/6x35a43hv1?autoplay=0&wmode=transparent" title="Abdul Light — Strategy Session Intro" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <h2>Book Your Strategy Session</h2>
+      <p>This is <strong>not</strong> a sales call — it's a real conversation about your trading, your goals, and whether we're the right fit to work together. Pick a time that works for you below.</p>
+      <a href="https://calendly.com/abdullight/1-1-consultation-with-abdul-light" class="cta" target="_blank" rel="noopener">📅 Book Your Calendly Call</a>
+      <span class="cta-sub">Spots fill fast — book within 24 hours to lock yours in</span>
+    </div>
+
+    <div class="what-next">
+      <h3>Before The Call</h3>
+      <p>Come prepared. Here's how to get the most out of it:</p>
+      <ul>
+        <li><span class="check">1</span><div>Check your email — your confirmation and call link have been sent.</div></li>
+        <li><span class="check">2</span><div>Write down your top 3 trading goals. We'll talk through them on the call.</div></li>
+        <li><span class="check">3</span><div>Be on time. Late arrivals are not rescheduled — spots are limited.</div></li>
+        <li><span class="check">4</span><div>Show up ready to commit. If you're not serious, save us both the time.</div></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- "THINK ABOUT IT" VERSION -->
+  <div class="think-box">
+    <div class="hero">
+      <div class="badge" style="color:#aaa;border-color:#444;background:#1a1a1a">Application Received</div>
+      <h1>Thanks For Applying.</h1>
+      <p class="lead">Based on your answers, the timing might not be right just yet — and that's okay. When you're ready to fully commit and invest in yourself, the application will still be here.</p>
+    </div>
+
+    <div class="cta-block">
+      <h2>In The Meantime…</h2>
+      <p>Follow the journey, study the strategies we share publicly, and come back when you're ready to make trading a real priority.</p>
+      <a href="index.html" class="cta">← Back To Homepage</a>
+    </div>
+  </div>
+
+  <!-- SOCIALS -->
+  <div class="socials">
+    <p>Follow the journey while you wait</p>
+    <div class="social-links">
+      <a href="#">Instagram</a>
+      <a href="#">YouTube</a>
+      <a href="#">TikTok</a>
+      <a href="#">X / Twitter</a>
+      <a href="#">Discord</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="brand">FOREX GLOBE</div>
+  © 2026 Abdul Light · All Rights Reserved · Trading involves substantial risk. Past performance is not indicative of future results.
+</footer>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  if(params.get('status') === 'think'){document.body.classList.add('think')}
+</script>
+
+</body>
+</html>

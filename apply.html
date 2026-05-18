@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Apply — Forex Globe Mentorship</title>
+<style>
+  :root{
+    --bg:#070707;--bg-2:#0f0f0f;--card:#141414;--line:#222;
+    --text:#f5f5f5;--muted:#9a9a9a;
+    --accent:#d4af37;--accent-2:#b89530;--accent-soft:rgba(212,175,55,.12);
+    --danger:#ff4d4d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);font-family:'Inter','Helvetica Neue',Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+
+  nav{position:sticky;top:0;background:rgba(7,7,7,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);z-index:50}
+  .nav-inner{max-width:1200px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between}
+  .logo{font-weight:800;font-size:20px;letter-spacing:.5px;text-transform:uppercase}
+  .logo span{color:var(--accent)}
+  .back{font-size:14px;color:var(--muted)}
+  .back:hover{color:#fff}
+
+  .wrap{max-width:680px;margin:0 auto;padding:40px 24px 80px}
+
+  .crumb{display:inline-block;color:var(--accent);font-size:13px;letter-spacing:1px;font-weight:600;margin-bottom:14px;text-transform:uppercase}
+  h1{font-size:clamp(28px,4vw,42px);font-weight:800;letter-spacing:-.02em;margin-bottom:14px;line-height:1.1}
+  .lead{color:var(--muted);font-size:16px;margin-bottom:32px}
+  .lead strong{color:#fff}
+
+  /* PROGRESS */
+  .steps{display:flex;justify-content:space-between;margin-bottom:8px;position:relative}
+  .steps::before{content:"";position:absolute;top:18px;left:8%;right:8%;height:2px;background:var(--line);z-index:0}
+  .step-dot{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:8px;flex:1}
+  .dot{
+    width:36px;height:36px;border-radius:50%;
+    background:var(--card);border:2px solid var(--line);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:700;font-size:14px;color:var(--muted);transition:.2s;
+  }
+  .dot.active{background:var(--accent);border-color:var(--accent);color:#000}
+  .dot.done{background:var(--accent-soft);border-color:var(--accent);color:var(--accent)}
+  .step-label{font-size:12px;color:var(--muted);font-weight:600;letter-spacing:.5px}
+  .step-dot.active .step-label{color:#fff}
+
+  .progress-bar{height:4px;background:var(--line);border-radius:99px;margin:24px 0 32px;overflow:hidden}
+  .progress-fill{height:100%;background:var(--accent);width:0%;transition:width .3s ease}
+  .progress-label{font-size:12px;color:var(--muted);margin-bottom:6px;display:flex;justify-content:space-between}
+
+  /* GATE */
+  .gate{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;padding:36px;margin-bottom:24px;
+    position:relative;overflow:hidden;
+  }
+  .gate::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);
+  }
+  .gate h2{font-size:22px;margin-bottom:14px;color:var(--accent)}
+  .gate p{color:var(--muted);font-size:15px;margin-bottom:14px;line-height:1.65}
+  .gate p strong{color:#fff}
+  .gate ul{list-style:none;margin:18px 0;padding-left:0}
+  .gate li{padding:10px 0;color:#ddd;font-size:14px;display:flex;gap:10px;align-items:flex-start}
+  .gate li::before{
+    content:"✓";color:var(--accent);font-weight:900;flex-shrink:0;
+    width:20px;height:20px;border-radius:50%;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px;
+  }
+  .gate-btns{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+  .btn{
+    padding:14px 24px;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;
+    border:none;transition:.2s;font-family:inherit;
+  }
+  .btn-primary{background:var(--accent);color:#000}
+  .btn-primary:hover{background:var(--accent-2);transform:translateY(-1px)}
+  .btn-ghost{background:transparent;color:var(--muted);border:1px solid var(--line)}
+  .btn-ghost:hover{color:#fff;border-color:var(--muted)}
+
+  /* FORM */
+  .form-step{display:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:36px}
+  .form-step.active{display:block;animation:fade .3s}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .form-step h2{font-size:20px;margin-bottom:8px}
+  .form-step .sub{color:var(--muted);font-size:14px;margin-bottom:24px}
+
+  .field{margin-bottom:20px}
+  label{display:block;font-size:14px;color:#ddd;margin-bottom:8px;font-weight:600}
+  input,select{
+    width:100%;background:var(--bg-2);border:1px solid var(--line);color:#fff;
+    padding:14px 16px;border-radius:10px;font-size:15px;font-family:inherit;
+    transition:.2s;
+  }
+  input:focus,select:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(212,175,55,.15)}
+
+  .radio-group{display:flex;flex-direction:column;gap:10px}
+  .radio-opt{
+    display:flex;align-items:center;gap:12px;
+    background:var(--bg-2);border:1px solid var(--line);
+    padding:14px 16px;border-radius:10px;cursor:pointer;transition:.15s;
+  }
+  .radio-opt:hover{border-color:var(--muted)}
+  .radio-opt input{width:auto;flex-shrink:0;accent-color:var(--accent)}
+  .radio-opt.selected{border-color:var(--accent);background:var(--accent-soft)}
+  .radio-opt span{font-size:14px;color:#ddd}
+
+  .form-nav{display:flex;justify-content:space-between;margin-top:32px;gap:12px;align-items:center}
+  .step-counter{font-size:13px;color:var(--muted)}
+
+  /* RESULTS */
+  .result-screen{display:none;background:var(--card);border:1px solid var(--line);border-radius:16px;padding:56px 32px;text-align:center}
+  .result-screen.active{display:block;animation:fade .3s}
+  .result-emoji{font-size:56px;margin-bottom:20px}
+  .result-screen h2{font-size:26px;margin-bottom:16px}
+  .result-screen p{color:var(--muted);font-size:15px;margin-bottom:20px;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7}
+  .link-btn{color:var(--accent);font-size:14px;font-weight:600;margin-top:16px;display:inline-block}
+  .link-btn:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Forex <span>Globe</span></div>
+    <a href="index.html" class="back">← Back To Website</a>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="crumb">Forex Globe · 1on1 Mentorship Application</div>
+  <h1>Apply To Work With Abdul Light.</h1>
+  <p class="lead">This isn't a course you buy and forget — it's a <strong>1on1 mastermind</strong> with a limited number of seats. Answer honestly. I only work with people I can genuinely help.</p>
+
+  <!-- Step indicators -->
+  <div class="steps">
+    <div class="step-dot active" data-step="1"><div class="dot">1</div><div class="step-label">You</div></div>
+    <div class="step-dot" data-step="2"><div class="dot">2</div><div class="step-label">Trading</div></div>
+    <div class="step-dot" data-step="3"><div class="dot">3</div><div class="step-label">Fit</div></div>
+  </div>
+
+  <div class="progress-label"><span>Application Progress</span><span id="progressPct">0%</span></div>
+  <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+
+  <!-- GATE -->
+  <div class="gate" id="gate">
+    <h2>Do I Qualify To Work With Abdul Light?</h2>
+    <p>I only mastermind with <strong>serious, action-taking traders and business owners</strong>. This is high-level work — and I cap my time at a small number of clients so I can deliver real results.</p>
+    <p>If you're not willing to invest in yourself — with or without me — this is not the right room. I won't waste your time, and I expect the same in return.</p>
+    <p style="color:#fff;font-weight:600;margin-top:18px">Only apply if you meet ALL of the following:</p>
+    <ul>
+      <li>You're serious about building real trading income — not chasing signals</li>
+      <li>You're willing to follow a structured plan and be held accountable</li>
+      <li>You have capital to trade and to invest in yourself at a high level</li>
+      <li>You'll show up, do the work, and act on what we teach</li>
+    </ul>
+    <div class="gate-btns">
+      <button class="btn btn-primary" onclick="startApp()">I'm A Fit — Apply Now →</button>
+      <button class="btn btn-ghost" onclick="showResult('notForMe')">This is not for me</button>
+    </div>
+  </div>
+
+  <!-- STEP 1 -->
+  <form class="form-step" id="step1" data-step="1">
+    <h2>Step 1 of 3 — About You</h2>
+    <p class="sub">Quick basics so we know how to follow up.</p>
+    <div class="field">
+      <label>Full name</label>
+      <input type="text" name="name" placeholder="Your full name" required>
+    </div>
+    <div class="field">
+      <label>Email address</label>
+      <input type="email" name="email" placeholder="you@email.com" required>
+    </div>
+    <div class="field">
+      <label>WhatsApp / phone number</label>
+      <input type="tel" name="phone" placeholder="+44 7..." required>
+    </div>
+    <div class="field">
+      <label>Age</label>
+      <input type="number" name="age" min="13" max="99" placeholder="Your age" required>
+    </div>
+    <div class="field">
+      <label>Country</label>
+      <select name="country" required>
+        <option value="">Select your country...</option>
+        <option>United Kingdom</option><option>United States</option><option>Canada</option>
+        <option>Australia</option><option>Germany</option><option>Netherlands</option>
+        <option>France</option><option>Spain</option><option>Italy</option>
+        <option>UAE</option><option>Saudi Arabia</option><option>India</option>
+        <option>Pakistan</option><option>Nigeria</option><option>South Africa</option>
+        <option>Other</option>
+      </select>
+    </div>
+    <div class="form-nav">
+      <button type="button" class="btn btn-ghost" onclick="goBack()">← Back</button>
+      <div class="step-counter">1 of 3</div>
+      <button type="button" class="btn btn-primary" onclick="nextStep(1)">Next →</button>
+    </div>
+  </form>
+
+  <!-- STEP 2 -->
+  <form class="form-step" id="step2" data-step="2">
+    <h2>Step 2 of 3 — Your Trading</h2>
+    <p class="sub">So I know exactly where you are right now.</p>
+
+    <div class="field">
+      <label>How long have you been trading forex?</label>
+      <div class="radio-group">
+        <label class="radio-opt"><input type="radio" name="experience" value="new"><span>Brand new — never traded before</span></label>
+        <label class="radio-opt"><input type="radio" name="experience" value="<6mo"><span>Less than 6 months</span></label>
+        <label class="radio-opt"><input type="radio" name="experience" value="6-12mo"><span>6 months – 1 year</span></label>
+        <label class="radio-opt"><input type="radio" name="experience" value="1-2yr"><span>1 – 2 years</span></label>
+        <label class="radio-opt"><input type="radio" name="experience" value="2yr+"><span>2+ years</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>What's your main goal in the next 12 months?</label>
+      <div class="radio-group">
+        <label class="radio-opt"><input type="radio" name="goal" value="consistent"><span>Become consistently profitable</span></label>
+        <label class="radio-opt"><input type="radio" name="goal" value="scale"><span>Scale my existing account aggressively</span></label>
+        <label class="radio-opt"><input type="radio" name="goal" value="funded"><span>Get funded ($300k Funded Trader Program)</span></label>
+        <label class="radio-opt"><input type="radio" name="goal" value="fulltime"><span>Replace my income and go full-time</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>How much capital do you currently have available to trade?</label>
+      <div class="radio-group">
+        <label class="radio-opt"><input type="radio" name="capital" value="<1k"><span>Under $1,000</span></label>
+        <label class="radio-opt"><input type="radio" name="capital" value="1-5k"><span>$1,000 – $5,000</span></label>
+        <label class="radio-opt"><input type="radio" name="capital" value="5-25k"><span>$5,000 – $25,000</span></label>
+        <label class="radio-opt"><input type="radio" name="capital" value="25k+"><span>$25,000+</span></label>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <button type="button" class="btn btn-ghost" onclick="prevStep(2)">← Back</button>
+      <div class="step-counter">2 of 3</div>
+      <button type="button" class="btn btn-primary" onclick="nextStep(2)">Next →</button>
+    </div>
+  </form>
+
+  <!-- STEP 3 -->
+  <form class="form-step" id="step3" data-step="3">
+    <h2>Step 3 of 3 — Are You The Right Fit?</h2>
+    <p class="sub">Be honest. This decides whether we book a call.</p>
+
+    <div class="field">
+      <label>How serious are you about making this work?</label>
+      <div class="radio-group">
+        <label class="radio-opt"><input type="radio" name="serious" value="exploring"><span>Somewhat serious — still exploring</span></label>
+        <label class="radio-opt"><input type="radio" name="serious" value="committed"><span>Very serious — ready to commit</span></label>
+        <label class="radio-opt"><input type="radio" name="serious" value="all-in"><span>All in — trading is my priority right now</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>Where are you with investing in yourself?</label>
+      <div class="radio-group">
+        <label class="radio-opt"><input type="radio" name="invest" value="ready"><span>I'm ready to invest in my trading future</span></label>
+        <label class="radio-opt"><input type="radio" name="invest" value="understand"><span>I understand real results require real commitment</span></label>
+        <label class="radio-opt"><input type="radio" name="invest" value="think"><span>I need some time to think about it</span></label>
+        <label class="radio-opt"><input type="radio" name="invest" value="not-ready"><span>Not ready to commit yet</span></label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label>What's the biggest problem holding you back right now?</label>
+      <input type="text" name="problem" placeholder="In one sentence — what's stopping you?" required>
+    </div>
+
+    <div class="form-nav">
+      <button type="button" class="btn btn-ghost" onclick="prevStep(3)">← Back</button>
+      <div class="step-counter">3 of 3</div>
+      <button type="button" class="btn btn-primary" onclick="submitApp()">Submit Application →</button>
+    </div>
+  </form>
+
+  <!-- RESULT: not for me -->
+  <div class="result-screen" id="notForMe">
+    <div class="result-emoji">🙏</div>
+    <h2>Not The Right Time.</h2>
+    <p>I respect the honesty. This program requires full commitment and a serious investment — and when you're ready, the application will still be here.</p>
+    <p>In the meantime, follow the journey on social, soak up the free value, and come back when you're ready to fully commit.</p>
+    <a href="index.html" class="link-btn">← Back to homepage</a>
+  </div>
+</div>
+
+<script>
+  let currentStep = 0;
+  const fill = document.getElementById('progressFill');
+  const pct = document.getElementById('progressPct');
+
+  function updateProgress(step){
+    const map = {0:0,1:33,2:66,3:100};
+    fill.style.width = map[step] + '%';
+    pct.textContent = map[step] + '%';
+    document.querySelectorAll('.step-dot').forEach(d=>{
+      const s = parseInt(d.dataset.step);
+      d.classList.remove('active');
+      d.querySelector('.dot').classList.remove('active','done');
+      if(s < step){d.querySelector('.dot').classList.add('done')}
+      if(s === step){d.classList.add('active');d.querySelector('.dot').classList.add('active')}
+    });
+  }
+
+  function showStep(n){
+    document.getElementById('gate').style.display='none';
+    document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.result-screen').forEach(s=>s.classList.remove('active'));
+    if(n>=1 && n<=3){
+      document.getElementById('step'+n).classList.add('active');
+      currentStep = n;
+      updateProgress(n);
+    }
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  function startApp(){showStep(1)}
+  function nextStep(n){
+    const form = document.getElementById('step'+n);
+    if(n===1){
+      const inputs = form.querySelectorAll('input, select');
+      for(const i of inputs){if(!i.value){alert('Please fill in all fields');i.focus();return}}
+      const age = parseInt(form.querySelector('[name="age"]').value);
+      if(age < 18){showResult('notForMe');return}
+    } else if (n===2){
+      const groups = new Set(); form.querySelectorAll('input[type="radio"]').forEach(r=>groups.add(r.name));
+      const checked = form.querySelectorAll('input[type="radio"]:checked');
+      if(checked.length < groups.size){alert('Please answer all questions');return}
+    }
+    showStep(n+1);
+  }
+  function prevStep(n){showStep(n-1)}
+  function goBack(){window.location.href='index.html'}
+
+  function submitApp(){
+    const form = document.getElementById('step3');
+    const groups = new Set(); form.querySelectorAll('input[type="radio"]').forEach(r=>groups.add(r.name));
+    const checked = form.querySelectorAll('input[type="radio"]:checked');
+    const problem = form.querySelector('[name="problem"]').value;
+    if(checked.length < groups.size || !problem){alert('Please answer all questions');return}
+    const invest = form.querySelector('input[name="invest"]:checked').value;
+    const serious = form.querySelector('input[name="serious"]:checked').value;
+    if((invest==='ready' || invest==='understand') && (serious==='committed' || serious==='all-in')){
+      window.location.href = 'thank-you.html?status=qualified';
+    } else {
+      window.location.href = 'thank-you.html?status=think';
+    }
+  }
+
+  function showResult(id){
+    document.getElementById('gate').style.display='none';
+    document.querySelectorAll('.form-step').forEach(s=>s.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+
+  document.addEventListener('change', e => {
+    if(e.target.type==='radio'){
+      const group = e.target.closest('.radio-group');
+      group.querySelectorAll('.radio-opt').forEach(o=>o.classList.remove('selected'));
+      e.target.closest('.radio-opt').classList.add('selected');
+    }
+  });
+</script>
+
+</body>
+</html>

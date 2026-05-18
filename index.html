@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Forex Globe — 1on1 Mentorship With Abdul Light</title>
+<meta name="description" content="Finally, an easy way to scale your trading account — without wasting time chasing dead-beat signals. Apply for 1on1 mentorship with Abdul Light.">
+<style>
+  :root{
+    --bg:#070707;
+    --bg-2:#0f0f0f;
+    --card:#141414;
+    --line:#222;
+    --text:#f5f5f5;
+    --muted:#9a9a9a;
+    --accent:#d4af37;      /* gold for forex/luxury feel */
+    --accent-2:#b89530;
+    --accent-soft:rgba(212,175,55,.12);
+    --green:#00d27a;
+    --danger:#ff4d4d;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{background:var(--bg);color:var(--text);font-family:'Inter','Helvetica Neue',Arial,sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  /* NAV */
+  nav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(7,7,7,.85);
+    backdrop-filter:blur(12px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav-inner{
+    max-width:1200px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-weight:800;font-size:20px;letter-spacing:.5px;text-transform:uppercase}
+  .logo span{color:var(--accent)}
+  .nav-links{display:flex;gap:28px;font-size:14px;color:var(--muted)}
+  .nav-links a:hover{color:var(--text)}
+  .nav-cta{
+    background:var(--accent);color:#000;padding:10px 18px;border-radius:8px;
+    font-weight:700;font-size:14px;transition:.2s;
+  }
+  .nav-cta:hover{background:var(--accent-2)}
+
+  /* HERO */
+  .hero{
+    padding:80px 24px 60px;text-align:center;max-width:1100px;margin:0 auto;
+    position:relative;
+  }
+  .hero::before{
+    content:"";position:absolute;inset:0;
+    background:radial-gradient(ellipse at center top,var(--accent-soft),transparent 60%);
+    pointer-events:none;
+  }
+  .hero > *{position:relative}
+  .badge{
+    display:inline-block;background:var(--accent-soft);color:var(--accent);
+    border:1px solid rgba(212,175,55,.3);padding:6px 14px;border-radius:999px;
+    font-size:13px;font-weight:600;margin-bottom:24px;letter-spacing:.5px;
+  }
+  h1{
+    font-size:clamp(32px,5vw,58px);font-weight:800;line-height:1.05;
+    margin-bottom:20px;letter-spacing:-.02em;
+  }
+  h1 .accent{color:var(--accent)}
+  .sub{color:var(--muted);font-size:clamp(16px,2vw,19px);max-width:740px;margin:0 auto 36px}
+  .sub strong{color:#fff}
+
+  /* VSL */
+  .vsl-wrap{
+    max-width:900px;margin:0 auto 32px;
+    border-radius:18px;overflow:hidden;
+    border:1px solid var(--line);
+    box-shadow:0 25px 70px rgba(0,0,0,.7),0 0 0 1px rgba(212,175,55,.15);
+    background:#000;
+  }
+  .vsl{
+    position:relative;width:100%;aspect-ratio:16/9;
+    background:#000;
+  }
+  .vsl iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  .cta-row{display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:8px}
+  .cta{
+    display:inline-block;background:var(--accent);color:#000;
+    padding:18px 44px;border-radius:10px;font-weight:800;font-size:17px;
+    transition:.2s;text-transform:uppercase;letter-spacing:.5px;
+  }
+  .cta:hover{background:var(--accent-2);transform:translateY(-2px)}
+  .scarcity{color:var(--accent);font-size:13px;font-weight:600;display:flex;align-items:center;gap:8px}
+  .scarcity::before{content:"●";color:#ff4d4d;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .scarcity strong{color:#fff}
+
+  /* TRUST STRIP */
+  .trust{
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+    padding:24px;background:var(--bg-2);
+  }
+  .trust-inner{
+    max-width:1200px;margin:0 auto;
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;text-align:center;
+  }
+  .trust-item .num{font-size:28px;font-weight:800;color:var(--accent);letter-spacing:-.02em}
+  .trust-item .lbl{color:var(--muted);font-size:13px;margin-top:4px;letter-spacing:.5px;text-transform:uppercase}
+
+  /* SECTIONS */
+  .section{padding:90px 24px}
+  .section.alt{background:var(--bg-2)}
+  .container{max-width:1200px;margin:0 auto}
+  .section-head{text-align:center;margin-bottom:56px}
+  .eyebrow{color:var(--accent);font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:10px}
+  h2{font-size:clamp(28px,4.2vw,44px);font-weight:800;letter-spacing:-.02em;line-height:1.1}
+  .section-sub{color:var(--muted);margin-top:14px;font-size:17px;max-width:680px;margin-left:auto;margin-right:auto}
+
+  /* FROM THE DESK */
+  .desk{display:grid;grid-template-columns:1fr 1.3fr;gap:60px;align-items:center;max-width:1100px;margin:0 auto}
+  .desk-img{
+    aspect-ratio:4/5;border-radius:16px;border:1px solid var(--line);
+    overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.5);
+    background:linear-gradient(135deg,#1a1a1a,#0d0d0d);
+  }
+  .desk-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .desk-content .eyebrow{margin-bottom:14px}
+  .desk-content p{color:var(--muted);font-size:16px;margin-bottom:16px;line-height:1.7}
+  .desk-content p strong{color:#fff}
+  .signature{margin-top:24px}
+  .signature-name{font-size:22px;font-weight:800;color:var(--accent)}
+  .signature-title{font-size:13px;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-top:4px}
+
+  /* PAYOUTS / WINS */
+  .total-payouts{font-size:clamp(48px,8vw,84px);font-weight:900;color:var(--accent);letter-spacing:-.03em;line-height:1}
+  .marquee{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);position:relative;margin-top:48px}
+  .marquee-track{display:flex;gap:18px;width:max-content;animation:scroll 45s linear infinite}
+  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  .payout-card{
+    flex:0 0 220px;background:var(--card);border:1px solid var(--line);
+    border-radius:14px;padding:14px;text-align:center;
+  }
+  .payout-img{
+    aspect-ratio:1;background:#0a0a0a;border-radius:10px;margin-bottom:12px;
+    overflow:hidden;display:flex;align-items:center;justify-content:center;
+  }
+  .payout-img img{width:100%;height:100%;object-fit:cover;display:block}
+  .payout-amt{font-size:18px;font-weight:800;color:var(--accent);letter-spacing:.3px}
+  .payout-lbl{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-top:2px}
+
+  /* TESTIMONIALS */
+  .testimonial-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:16px;
+  }
+  .testimonial{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:28px;transition:.2s;display:flex;flex-direction:column;gap:16px;
+  }
+  .testimonial:hover{border-color:rgba(212,175,55,.4);transform:translateY(-4px)}
+  .t-video{
+    aspect-ratio:16/9;background:#000;border-radius:10px;overflow:hidden;position:relative;
+  }
+  .t-video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .t-name{font-weight:800;font-size:17px}
+  .t-loc{font-size:12px;color:var(--accent);letter-spacing:1px;text-transform:uppercase;margin-top:2px}
+  .t-quote{color:#ddd;font-size:14px;line-height:1.65}
+  .t-result{
+    display:inline-block;background:var(--accent-soft);color:var(--accent);
+    padding:6px 12px;border-radius:6px;font-size:12px;font-weight:700;
+    border:1px solid rgba(212,175,55,.3);align-self:flex-start;
+  }
+
+  /* PROGRAM FEATURES */
+  .program-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+  .feat{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;padding:32px;
+    transition:.2s;position:relative;overflow:hidden;
+  }
+  .feat::before{
+    content:"";position:absolute;top:0;left:0;right:0;height:2px;
+    background:linear-gradient(90deg,transparent,var(--accent),transparent);
+    opacity:0;transition:.3s;
+  }
+  .feat:hover{border-color:rgba(212,175,55,.4);transform:translateY(-4px)}
+  .feat:hover::before{opacity:1}
+  .feat-icon{
+    width:52px;height:52px;border-radius:12px;
+    background:var(--accent-soft);color:var(--accent);
+    display:flex;align-items:center;justify-content:center;
+    font-size:26px;margin-bottom:18px;
+  }
+  .feat h3{font-size:18px;margin-bottom:10px;font-weight:700}
+  .feat p{color:var(--muted);font-size:14px;line-height:1.65}
+
+  /* QUALIFY */
+  .qualify{max-width:780px;margin:0 auto;text-align:center}
+  .qualify h2{margin-bottom:20px}
+  .qualify p{color:var(--muted);font-size:16px;margin-bottom:16px;line-height:1.7}
+  .qualify p strong{color:#fff}
+  .qualify-box{
+    background:var(--card);border:1px solid var(--line);border-radius:16px;
+    padding:36px;margin:36px 0;text-align:left;
+  }
+  .qualify-box h3{color:var(--accent);font-size:15px;letter-spacing:1px;text-transform:uppercase;margin-bottom:20px}
+  .qualify-box ul{list-style:none}
+  .qualify-box li{padding:10px 0;color:#ddd;font-size:15px;display:flex;gap:12px;align-items:flex-start}
+  .qualify-box li::before{
+    content:"✓";color:var(--accent);font-weight:900;flex-shrink:0;
+    width:22px;height:22px;border-radius:50%;background:var(--accent-soft);
+    display:flex;align-items:center;justify-content:center;font-size:13px;
+  }
+
+  /* FINAL CTA */
+  .final{
+    text-align:center;padding:120px 24px;
+    background:radial-gradient(ellipse at center,var(--accent-soft),transparent 70%);
+    border-top:1px solid var(--line);
+  }
+  .final h2{margin-bottom:18px}
+  .final p{color:var(--muted);max-width:580px;margin:0 auto 36px;font-size:17px}
+
+  /* FOOTER */
+  footer{
+    padding:48px 24px;text-align:center;color:#555;font-size:12px;
+    border-top:1px solid var(--line);line-height:1.7;background:var(--bg-2);
+  }
+  footer .brand{color:var(--accent);font-weight:800;letter-spacing:1px;margin-bottom:8px;font-size:14px}
+  footer .disc{max-width:780px;margin:20px auto 0;font-size:11px;color:#444}
+
+  @media(max-width:760px){
+    .nav-links{display:none}
+    .hero{padding:48px 20px 40px}
+    .section{padding:60px 20px}
+    .desk{grid-template-columns:1fr;gap:32px}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">Forex <span>Globe</span></div>
+    <div class="nav-links">
+      <a href="#vsl">Watch</a>
+      <a href="#wins">Wins</a>
+      <a href="#results">Results</a>
+      <a href="#program">Program</a>
+    </div>
+    <a href="apply.html" class="nav-cta">Apply Now</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="vsl">
+  <div class="badge">★ 1ON1 MENTORSHIP — APPLICATIONS OPEN</div>
+  <h1>The Easiest Way To Scale Your<br><span class="accent">Trading Account.</span></h1>
+  <p class="sub">Finally, a real way to grow your forex trading — <strong>without information overwhelm, dead-beat signal groups, or wasted time</strong>. Watch the video to see the exact 4-part framework Abdul Light uses to deliver consistent results.</p>
+
+  <div class="vsl-wrap">
+    <div class="vsl">
+      <iframe src="https://fast.wistia.net/embed/iframe/6x35a43hv1?autoplay=0&wmode=transparent" title="Abdul Light VSL" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="cta-row">
+    <a href="apply.html" class="cta">Apply For Mentorship →</a>
+    <div class="scarcity">Only <strong>a few spots</strong> available this month</div>
+  </div>
+</section>
+
+<!-- TRUST STRIP -->
+<div class="trust">
+  <div class="trust-inner">
+    <div class="trust-item"><div class="num">10+ Years</div><div class="lbl">Trading Experience</div></div>
+    <div class="trust-item"><div class="num">£100k+</div><div class="lbl">Invested In Education</div></div>
+    <div class="trust-item"><div class="num">150+</div><div class="lbl">Countries Served</div></div>
+    <div class="trust-item"><div class="num">$300k</div><div class="lbl">Funded Trader Program</div></div>
+  </div>
+</div>
+
+<!-- FROM THE DESK -->
+<section class="section">
+  <div class="container">
+    <div class="desk">
+      <div class="desk-img">
+        <img src="https://images.clickfunnels.com/23/f9932ea9994e199409ff19690e1707/IMG_4146.jpg" alt="Abdul Light — Founder of Forex Globe" loading="lazy">
+      </div>
+      <div class="desk-content">
+        <div class="eyebrow">From The Desk Of Abdul Light</div>
+        <h2 style="margin-bottom:24px">If You'd Like To 2x, 3x or 4x Your Trading Account — Read This.</h2>
+        <p>I don't know you yet, so it makes sense if you're skeptical. That's exactly why I let the results speak first.</p>
+        <p><strong>Forex Globe</strong> is the only program where I look over your shoulder in real time, scale your knowledge, and teach you the same 4-part framework I've used to generate consistent results across multiple six figures.</p>
+        <p>We don't sell hype. We sell <strong>proof, mentorship, and the unfair advantage</strong> that comes from doing this the right way.</p>
+        <div class="signature">
+          <div class="signature-name">— Abdul Light</div>
+          <div class="signature-title">Founder · Forex Globe</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WINS / PAYOUTS -->
+<section class="section alt" id="wins">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Real Wins · Real Members</div>
+      <div class="total-payouts">£62,752+</div>
+      <div class="section-sub">In recent verified company revenue · And our top students keep scaling beside us.</div>
+    </div>
+
+    <div class="marquee">
+      <div class="marquee-track" id="payoutTrack"></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" id="results">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">What Legends Say</div>
+      <h2>Students Who Took Action.</h2>
+      <div class="section-sub">Real conversations. Real screenshots. Real members of the Forex Globe community.</div>
+    </div>
+
+    <div class="testimonial-grid">
+      <div class="testimonial">
+        <div class="t-video">
+          <iframe src="https://www.youtube.com/embed/NNnqRFDI6I4?modestbranding=1&rel=0" title="Colin Martin testimonial" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div>
+          <div class="t-name">Colin Martin</div>
+          <div class="t-loc">Lancaster, Pennsylvania · USA</div>
+        </div>
+        <div class="t-result">100% ROI · Doubled His Account</div>
+        <div class="t-quote">"Last year working with Abdul Light I doubled my account doing 100% ROI." Colin came in with zero knowledge of the markets — now he's on track to triple that investment through the academy.</div>
+      </div>
+
+      <div class="testimonial">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/714463591?title=0&byline=0" title="Ahad Hussain testimonial" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div>
+          <div class="t-name">Ahad Hussain</div>
+          <div class="t-loc">Sydney · Australia</div>
+        </div>
+        <div class="t-result">$2,500+ In Month Two</div>
+        <div class="t-quote">After multiple failed mentorships, Ahad joined Abdul's 1on1 program. He mastered the Gold Strategy in one month, profited $2,500+ in month two, and is on the path to retire from his job.</div>
+      </div>
+
+      <div class="testimonial">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/714463535?title=0&byline=0" title="Awais Abbas testimonial" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div>
+          <div class="t-name">Awais Abbas</div>
+          <div class="t-loc">Copenhagen · Denmark</div>
+        </div>
+        <div class="t-result">$2.5k → $13k In 6 Months</div>
+        <div class="t-quote">Awais turned $2,500 into over $13,000 in 6 months following the program's strategies. He's now on a mission to 10x that this year using Forex Globe's playbook.</div>
+      </div>
+
+      <div class="testimonial">
+        <div class="t-video">
+          <iframe src="https://player.vimeo.com/video/714463577?title=0&byline=0" title="Mamadou Barry testimonial" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div>
+          <div class="t-name">Mamadou Barry</div>
+          <div class="t-loc">New York · USA</div>
+        </div>
+        <div class="t-result">$5k → $150k+ In One Year</div>
+        <div class="t-quote">After losing money trading alone, Mamadou enrolled in the full program. 3 months of vigorous learning later, he took $5,000 to over $150,000 — including $9,000 on a single 2-hour trade.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROGRAM -->
+<section class="section alt" id="program">
+  <div class="container">
+    <div class="section-head">
+      <div class="eyebrow">Inside Forex Globe</div>
+      <h2>What You Get When We Work Together.</h2>
+      <div class="section-sub">Every member gets a step-by-step operation built around them — so you can start seeing ROI from day one.</div>
+    </div>
+
+    <div class="program-grid">
+      <div class="feat">
+        <div class="feat-icon">👤</div>
+        <h3>Tailored 1on1 Mentorship</h3>
+        <p>Step-by-step video tutorials plus direct 1on1 support, calibrated to your level. No generic course content.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">📊</div>
+        <h3>Daily Market Analysis</h3>
+        <p>Our team of professional traders walks you through setups every day — so your action plan stays sharp.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🎯</div>
+        <h3>Weekly Webinar Training</h3>
+        <p>Class-style live webinars where we scan markets together and pick high-probability setups in real time.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">💰</div>
+        <h3>Funded Trader Program</h3>
+        <p>Get access to up to <strong style="color:#fff">$300,000</strong> in funded capital through the Forex Globe Funded Trader Program.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">💬</div>
+        <h3>Private Members Community</h3>
+        <p>Live chat with expert traders. Daily economic news, analysis, and the network that actually moves the needle.</p>
+      </div>
+      <div class="feat">
+        <div class="feat-icon">🛠</div>
+        <h3>Tools & Resources</h3>
+        <p>The exact resources we use to stay a cut above. Built to evolve as fast as the industry does.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUALIFY -->
+<section class="section">
+  <div class="container">
+    <div class="qualify">
+      <div class="eyebrow">Do I Qualify?</div>
+      <h2>This Isn't For Everyone.</h2>
+      <p>I only mastermind with serious, action-taking business owners and traders. If you're not willing to <strong>invest in yourself</strong> — with or without me — this is not the right room for you.</p>
+      <p>The reason I keep this small is simple: I want to <strong>show you, not just talk to you</strong>. If you can't commit to the work, save us both the time.</p>
+
+      <div class="qualify-box">
+        <h3>You're A Fit If:</h3>
+        <ul>
+          <li>You're serious about building real trading income — not chasing signals</li>
+          <li>You're willing to follow a structured plan and be accountable</li>
+          <li>You're ready to make a real investment in your skills and your future</li>
+          <li>You'll show up, do the work, and act on what we teach</li>
+        </ul>
+      </div>
+
+      <a href="apply.html" class="cta">Apply For Mentorship →</a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final">
+  <div class="eyebrow" style="color:var(--accent);font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:14px">Take Action Now</div>
+  <h2>Will You Be Our<br><span style="color:var(--accent)">Next Success Story?</span></h2>
+  <p>Opportunities like this don't come often — and when they do, the best move is to seize them quickly. The first step is the application below.</p>
+  <a href="apply.html" class="cta">Apply Immediately →</a>
+  <div class="scarcity" style="margin-top:18px;justify-content:center;display:inline-flex">Limited spots · <strong>Applications close soon</strong></div>
+</section>
+
+<footer>
+  <div class="brand">FOREX GLOBE</div>
+  © 2026 Abdul Light · All Rights Reserved
+  <div class="disc">
+    <strong>NOT FACEBOOK™:</strong> This site is not part of Facebook™ or endorsed by Facebook Inc. in any way. FACEBOOK™ is a trademark of FACEBOOK™, Inc.<br><br>
+    <strong>Earnings disclaimer:</strong> Earnings and income representations are aspirational statements only. Results shown on this page are our results and our students' results — they are not typical and your results will vary. Trading forex involves substantial risk and is not suitable for every investor. Past performance is not indicative of future results.
+  </div>
+</footer>
+
+<script>
+  // Payout marquee — pulled from Abdul's existing assets
+  const payouts = [
+    { img:"https://images.clickfunnels.com/6d/8f6ceb2b3f48ee8554f56a43669f03/WhatsApp-Image-2021-02-03-at-20.58.33.jpg", amt:"£62,752+", lbl:"Verified Company Revenue" },
+    { img:"https://images.clickfunnels.com/3b/d5a00ef7484bbd82152f6875d0a6e9/WhatsApp-Image-2022-06-28-at-3.29.39-PM.jpg", amt:"Member Win", lbl:"Forex Globe Client" },
+    { img:"https://images.clickfunnels.com/20/7a96a0e5ca4795a3d91dcb44b60f08/WhatsApp-Image-2022-06-28-at-3.30.49-PM.jpg", amt:"Member Win", lbl:"Forex Globe Client" },
+    { img:"https://images.clickfunnels.com/b6/b5bd756ac24c7a895999737d66141d/WhatsApp-Image-2022-06-28-at-3.34.43-PM.jpg", amt:"Member Win", lbl:"Forex Globe Client" },
+    { img:"https://images.clickfunnels.com/d8/0f8b5fa983495387571dc6c0dafd31/713a42b0-e8e3-4f8c-a882-d1c138dc7456.jpg", amt:"Member Win", lbl:"Forex Globe Client" },
+    { img:"https://images.clickfunnels.com/86/73e28595b344318808df4fedc7dcb7/IMG_1577.jpg", amt:"1on1 Mentorship", lbl:"Real Results" }
+  ];
+  const track = document.getElementById('payoutTrack');
+  const buildCard = (p) => `
+    <div class="payout-card">
+      <div class="payout-img"><img src="${p.img}" alt="${p.lbl}" loading="lazy"></div>
+      <div class="payout-amt">${p.amt}</div>
+      <div class="payout-lbl">${p.lbl}</div>
+    </div>`;
+  // duplicate for seamless loop
+  track.innerHTML = [...payouts, ...payouts, ...payouts].map(buildCard).join('');
+</script>
+
+</body>
+</html>
